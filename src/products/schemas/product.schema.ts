@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import {Document} from 'mongoose';
+import { Document } from 'mongoose';
 
 // new mongoose.Schema({
 //   title: String,
@@ -10,10 +10,10 @@ export type ProductDocument = Product & Document;
 @Schema()
 export class Product {
   @Prop()
-  title:string
+  title: string;
 
   @Prop()
-  price: number
+  price: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

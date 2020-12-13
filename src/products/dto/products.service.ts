@@ -8,11 +8,12 @@ import { UpdateProductDto } from './update-product.dto';
 @Injectable()
 // тут делаеться логика приложения
 export class ProductsService {
-  constructor(@InjectModel(Product.name) private productModel: Model<ProductDocument>) {
-  }
+  constructor(
+    @InjectModel(Product.name) private productModel: Model<ProductDocument>,
+  ) {}
 
   async getAll(): Promise<Product[]> {
-    return this.productModel.find().exec()
+    return this.productModel.find().exec();
   }
 
   async getById(id: string): Promise<Product> {
@@ -20,15 +21,14 @@ export class ProductsService {
   }
 
   async create(productDto: CreateProductDto): Promise<Product> {
-    const newProduct = new this.productModel(productDto)
-    return newProduct.save()
-
+    const newProduct = new this.productModel(productDto);
+    return newProduct.save();
   }
-  async remove(id:string): Promise<Product> {
-   return this.productModel.findByIdAndRemove(id)
+  async remove(id: string): Promise<Product> {
+    return this.productModel.findByIdAndRemove(id);
   }
 
-  async update(id:string, productDto: UpdateProductDto): Promise<Product>{
-    return this.productModel.findByIdAndUpdate(id, productDto, {new: true})
+  async update(id: string, productDto: UpdateProductDto): Promise<Product> {
+    return this.productModel.findByIdAndUpdate(id, productDto, { new: true });
   }
 }
